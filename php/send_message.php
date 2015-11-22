@@ -3,6 +3,7 @@
 if(isset($_POST['email'])) { // Check if the form was submitted else redirect to home page.
 	require_once 'config.php';
 
+    require_once '../vendor/autoload.php';
 	$message = '';
 	$error = '';
 
@@ -46,7 +47,18 @@ if(isset($_POST['email'])) { // Check if the form was submitted else redirect to
 	$body .= $message;
 	$headers = "From: $email";
 
-	if(mail($to, $subject, $body, $headers)) {
+    $transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, "ssl")
+  ->setUsername('enricowillemse.was@gmail.com')
+  ->setPassword('Ew3.141592');
+
+    $mailer = Swift_Mailer::newInstance($transport);
+
+    $message = Swift_Message::newInstance(strip_tags($_POST['name']))
+      ->setFrom($_POST['email'])
+      ->setTo($to)
+      ->setBody("email: ".$_POST['email']." ".$body);
+
+	if($mailer->send($message)) {
 		$message = 'Thank you, your message was sent';
 	} else {
 		$errors[] = 'Sorry there was a error sending you message';
