@@ -19,7 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
 
-      <meta name="description" content="Prime Analytics delivers Business Intelligence software for data visualization, guided analytics, embedded analytics and reporting.">
+      <meta name="description" content="Prime Analytics delivers Business Intelligence software for data visualization, guided analytics, embedded analytics and reporting.,gencovi">
       <meta name="google-site-verification" content="fhPPg7NFqguEScu5cqwogy5ueZeP3VD2qBP7elEluPw">
       <meta name="keywords" content="Analytics, Business Intelligence, Dashboards, Computer Vision, Cape Town,Analytics Cape Town">
 
@@ -212,7 +212,7 @@
                   <div class="service-text col-md-6">
                       <div class="inner white-text">
                           <h2 class="title">A LITTLE ABOUT US</h2>
-                          <p class="txt-md mb-30">We are based in Cape Town and became operational as of early 2015. Prime Analytics employs an in-house engineering team responsible for the development, management and implementation of analytical solutions. Most of our actual development work is done inhouse, yet we do employ a multi-national freelancer team of software developers from time to time. </p>
+                          <p class="txt-md mb-30">We are based in Cape Town and became operational as of late 2015. Prime Analytics employs an in-house engineering team responsible for the development, management and implementation of analytical solutions. Most of our actual development work is done inhouse, yet we do employ a multi-national freelancer team of software developers from time to time. </p>
                          
                       </div><!-- / .inner -->
                   </div><!-- / .service-text -->
@@ -226,7 +226,7 @@
           <div class="about container">
               <div class="row">
                   <div class="col-md-7">
-                      <p class="alt-text medium">What insights could you gain from your company’s data? It is our intention to make your big data an interpretable and valuable source of information on which you can act.</p>
+                      <p class="alt-text medium">What insights could you gain from your company’s data? It is our intention to make your company's big data an interpretable and valuable source of information on which you can act.</p>
                       <p>Every day big financial companies collect and store thousands of data pertaining to their assets and clients. With the advancement in cloud computing and data computation technology, we at Prime Analytics grabbed the opportunity to devolop a versatile, customizeable and interactive data visualization platform. With the nearly unlimmited application possibilties of our dashboard, we are able to customize it to your exact specifications. Whether you want to visualise data for your employees or your clients we will ensure that it is a simple process yielding meaningful insights.</p>
                   </div>
                   <div class="col-md-5">
@@ -508,6 +508,38 @@
 
   ga('create', 'UA-67298797-1', 'auto');
   ga('send', 'pageview');
+
+
+  jQuery(function ($) {
+      var currentMousePos = { x: -1, y: -1 };
+      $(document).mousemove(function (event) {
+          currentMousePos.x = event.pageX;
+          currentMousePos.y = event.pageY;
+      });
+
+
+      window.setInterval(function () {
+          ga('send', {
+              hitType: 'event',
+              eventCategory: 'MousePosition',
+              eventAction: 'interval',
+              eventLabel: JSON.stringify(currentMousePos)
+          });
+
+          console.log(JSON.stringify(currentMousePos));
+      }, 10000);
+
+          
+  });
+
+
+
+
+
+
+
+
+
 
               </script>
 </body>
